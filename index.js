@@ -16,8 +16,8 @@ app.use("/api/auth",require("./routes/auth.routes"))
 app.use("/api/todo",require("./routes/todo.routes"))
 
 app.use("*", (req, res) => {
-    res.sendFile(path.join(_dirname, "dist", "index.html"))
-    // res.status(404).json({ message: `route not found : ${req.method}:${req.url}`  })
+    // res.sendFile(path.join(_dirname, "dist", "index.html"))
+    res.status(404).json({ message: `route not found : ${req.method}:${req.url}`  })
 })
 mongoose.connect(process.env.MONGO_URL)
 mongoose.connection.once("open",()=>{
